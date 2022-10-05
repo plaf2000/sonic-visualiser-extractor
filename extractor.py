@@ -25,8 +25,10 @@ def check(extracted):
     for f in os.listdir(DATA_DIR):
         data_fname = os.path.join(DATA_DIR,f)
         if f not in extracted or os.path.getmtime(data_fname)>float(extracted[f]):
+            old_new = new
             new = True
             fname = os.path.splitext(f)[0]
+            sound_data = None
             for ext in IN_TYPES:
                 f_in = os.path.join(ORIG_RECS_DIR,f"{fname}.{ext}")
                 f_in_upper = os.path.join(ORIG_RECS_DIR,f"{fname}.{ext.upper()}")
@@ -36,6 +38,9 @@ def check(extracted):
                 elif os.path.isfile(f_in_upper):
                     sound_data = AudioSegment.from_file(f_in_upper,ext)
                     break
+            if sound_data is None:
+                new = old_new
+                break
             
             data = pd.read_csv(data_fname)
             data.sort_values("START", inplace=True)
