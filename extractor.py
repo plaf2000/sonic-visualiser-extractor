@@ -93,7 +93,7 @@ if __name__=="__main__":
         with open(extracted_fn,"w") as f:
             f.write("{}")
 
-    with open(os.path.join(EXTRACTED_DIR,"extracted.json"),"r") as f:
+    with open(extracted_fn,"r") as f:
         try:
             extracted = json.load(f)
         except json.decoder.JSONDecodeError:
@@ -103,7 +103,7 @@ if __name__=="__main__":
         sleep(1)
         new, extracted = check(extracted)
         if new:
-            with open(os.path.join(EXTRACTED_DIR,"extracted.json"),"w") as f:
+            with open(extracted_fn,"w") as f:
                 f.write(json.dumps(extracted))
 
         
