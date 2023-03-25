@@ -4,4 +4,4 @@ Description=Extract audio segments from analysed tracks in %I
 [Service]
 Type=simple
 User=plaf2000
-ExecStart=/home/plaf2000/sonic-visualizer-extractor/extractor.bash %i
+ExecStart=/home/plaf2000/sonic-visualizer-extractor/extractor.bash %I
