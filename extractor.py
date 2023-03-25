@@ -59,10 +59,7 @@ def check(extracted):
             for s in segments:
                 out_s = int(max(s["s"]-MARGIN,0))*1000
                 out_e = int(s["e"]+MARGIN)*1000
-                if sound_data.shape[0] == 2:
-                    cut_data = sound_data[:,out_s:out_e]
-                else:
-                    cut_data = sound_data[out_s:out_e]
+                cut_data = sound_data[out_s:out_e]
                 date_str = re.findall(DT_REGEX,fname)[0]
                 dt_obj = dt.datetime.strptime(date_str,DT_FORMAT)
                 td_s = dt.timedelta(seconds=s["s"])
