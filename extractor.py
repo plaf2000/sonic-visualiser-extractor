@@ -60,6 +60,7 @@ def check(extracted):
                 out_s = int(max(s["s"]-MARGIN,0))*1000
                 out_e = int(s["e"]+MARGIN)*1000
                 if data.shape[0] == 2:
+                    print(out_s, out_e)
                     cut_data = sound_data[:,out_s:out_e]
                 else:
                     cut_data = sound_data[out_s:out_e]
